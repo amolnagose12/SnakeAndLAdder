@@ -2,37 +2,43 @@ package com.bridgelabz;
 
 public class SnakeAndLadder {
 	public static void main(String[] args) {
-		System.out.println("Player Check option: ");
+		System.out.println("Player Winning Position is: ");
 
-		// initiating variable
-//	
-		int position = 0;
+	
+		// Initialize Variable
+		
+		int position = 0; 
 
-		// to roll a dice
-		int diceNumber = (int) Math.floor(Math.random() * 10) % 6 + 1;
-		System.out.println("diceNumber is : " + diceNumber);
+		while (position < 100) {
 
-		// to check option
-		int option = (int) Math.floor(Math.random() * 10) % 3;
-		System.out.println("player option is : " + option);
+			// to roll a dice
+			int diceNumber = (int) Math.floor(Math.random() * 10) % 6 + 1;
+			System.out.println("diceNumber is : " + diceNumber);
 
-		switch (option) {
-		case 1:
-			position = diceNumber + position;
-			System.out.println("Ladder");
-			System.out.println("position for the player after the ladder is : " + position);
-			break;
+			// check option after getting a diceNumber
+			int option = (int) Math.floor(Math.random() * 10) % 3;
+			System.out.println("selected player option : " + option);
 
-		case 2:
-			position = position - diceNumber;
-			System.out.println("Snack");
-			System.out.println("position for the player after the Snake is : " + position);
-			break;
+			switch (option) {
+			case 1:
+				position = diceNumber + position;
+				System.out.println("Ladder");
+				System.out.println("position for the player after the ladder is : " + position);
+				break;
 
-		default:
-			System.out.println("No play");
+			case 2:
+				position = position - diceNumber;
+				System.out.println("Snack");
+				if (position < 0) {
+					position = 0;
+					System.out.println("Player restart from zero: ");
+				}
+				System.out.println("position for the player after the Snake is : " + position);
+				break;
 
+			default:
+				System.out.println("No play");
+			}
 		}
 	}
-
 }
